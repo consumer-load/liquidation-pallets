@@ -1,10 +1,11 @@
 import { defineType, defineField } from 'sanity';
+import { Building2 } from 'lucide-react';
 
 export const retailerSchema = defineType({
   name: 'retailer',
   title: 'Brand / Retailer Source',
   type: 'document',
-  icon: () => '🏢',
+  icon: Building2,
   fields: [
     defineField({
       name: 'name',

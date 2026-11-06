@@ -1,10 +1,11 @@
 import { defineType, defineField } from 'sanity';
+import { ShoppingCart } from 'lucide-react';
 
 export const orderSchema = defineType({
   name: 'order',
   title: 'Order Record',
   type: 'document',
-  icon: () => '📦',
+  icon: ShoppingCart,
   fields: [
     defineField({
       name: 'orderNumber',

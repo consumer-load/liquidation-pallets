@@ -1,10 +1,11 @@
 import { defineType, defineField } from 'sanity';
+import { Settings } from 'lucide-react';
 
 export const siteSettingsSchema = defineType({
   name: 'siteSettings',
   title: 'Store Settings',
   type: 'document',
-  icon: () => '⚙️',
+  icon: Settings,
   groups: [
     { name: 'general', title: '⚙️ General', default: true },
     { name: 'contact', title: '📞 Contact & Warehouse' },

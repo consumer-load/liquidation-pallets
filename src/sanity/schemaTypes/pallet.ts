@@ -1,10 +1,11 @@
 import { defineType, defineField } from 'sanity';
+import { Boxes } from 'lucide-react';
 
 export const palletSchema = defineType({
   name: 'pallet',
   title: 'Liquidation Pallet',
   type: 'document',
-  icon: () => '📦',
+  icon: Boxes,
   groups: [
     { name: 'general', title: '📦 General Info', default: true },
     { name: 'specs', title: '⚖️ Specs & Logistics' },

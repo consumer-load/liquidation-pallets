@@ -1,10 +1,11 @@
 import { defineType, defineField } from 'sanity';
+import { HelpCircle } from 'lucide-react';
 
 export const faqItemSchema = defineType({
   name: 'faqItem',
   title: 'FAQ Item',
   type: 'document',
-  icon: () => '❓',
+  icon: HelpCircle,
   fields: [
     defineField({
       name: 'question',

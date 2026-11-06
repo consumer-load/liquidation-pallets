@@ -1,10 +1,11 @@
 import { defineType, defineField } from 'sanity';
+import { Tag } from 'lucide-react';
 
 export const tagSchema = defineType({
   name: 'tag',
   title: 'Tag',
   type: 'document',
-  icon: () => '🏷️',
+  icon: Tag,
   fields: [
     defineField({
       name: 'title',

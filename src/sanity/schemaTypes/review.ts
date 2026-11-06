@@ -1,10 +1,11 @@
 import { defineType, defineField } from 'sanity';
+import { Star } from 'lucide-react';
 
 export const reviewSchema = defineType({
   name: 'review',
   title: 'Customer Review',
   type: 'document',
-  icon: () => '⭐',
+  icon: Star,
   fields: [
     defineField({
       name: 'customerName',

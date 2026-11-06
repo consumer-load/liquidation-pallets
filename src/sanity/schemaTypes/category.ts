@@ -1,10 +1,11 @@
 import { defineType, defineField } from 'sanity';
+import { FolderTree } from 'lucide-react';
 
 export const categorySchema = defineType({
   name: 'category',
   title: 'Category',
   type: 'document',
-  icon: () => '📁',
+  icon: FolderTree,
   groups: [
     { name: 'general', title: '📁 Category Info', default: true },
     { name: 'seo', title: '🔍 SEO & Meta' },

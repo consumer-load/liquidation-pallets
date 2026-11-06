@@ -1,10 +1,11 @@
 import { defineType, defineField } from 'sanity';
+import { Megaphone } from 'lucide-react';
 
 export const bannerSchema = defineType({
   name: 'banner',
   title: 'Promotional Banner',
   type: 'document',
-  icon: () => '📢',
+  icon: Megaphone,
   fields: [
     defineField({
       name: 'title',
