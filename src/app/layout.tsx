@@ -17,16 +17,62 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Liquidation Pallets | Wholesale Overstock, Returns & Closeout Truckloads',
-  description: 'Buy direct wholesale liquidation pallets, verified customer returns, and excess overstock at up to 90% below retail MSRP. Nationwide LTL freight shipping.',
+  metadataBase: new URL('https://liquidation-pallets.pages.dev'),
+  title: {
+    default: 'Liquidation Pallets USA | Wholesale Overstock, Returns & Closeout Truckloads',
+    template: '%s | Liquidation Pallets USA',
+  },
+  description:
+    'Buy direct wholesale liquidation pallets, verified customer returns, and excess overstock at up to 90% below retail MSRP. Nationwide LTL freight shipping from Everman, TX.',
   keywords: [
     'liquidation pallets',
     'wholesale pallets',
     'amazon returns pallet',
+    'target liquidation',
+    'home depot tool lots',
     'overstock pallets',
     'truckload liquidation',
-    'surplus merchandise'
+    'surplus merchandise',
+    'bulk pallets texas',
   ],
+  authors: [{ name: 'SUNCITY PALLETS LIQUIDATION STORE LLC' }],
+  creator: 'Suncity Pallets Liquidation',
+  publisher: 'Suncity Pallets Liquidation',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://liquidation-pallets.pages.dev',
+    siteName: 'Liquidation Pallets USA',
+    title: 'Liquidation Pallets USA | Wholesale Overstock, Returns & Closeout Truckloads',
+    description:
+      'Direct wholesale truckloads & liquidation pallets from Amazon, Target, Home Depot, and Costco. Up to 90% off retail MSRP. Nationwide LTL shipping.',
+    images: [
+      {
+        url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&h=630&q=80',
+        width: 1200,
+        height: 630,
+        alt: 'Liquidation Pallets USA Wholesale Warehouse',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Liquidation Pallets USA | Wholesale Overstock, Returns & Closeout Truckloads',
+    description:
+      'Direct wholesale truckloads & liquidation pallets from Amazon, Target, Home Depot, and Costco. Up to 90% off retail MSRP.',
+    images: ['https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&h=630&q=80'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -34,14 +80,73 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // Schema.org Organization & WebSite JSON-LD
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Organization',
+        '@id': 'https://liquidation-pallets.pages.dev/#organization',
+        name: 'SUNCITY PALLETS LIQUIDATION STORE LLC',
+        alternateName: 'Liquidation Pallets USA',
+        url: 'https://liquidation-pallets.pages.dev',
+        logo: 'https://liquidation-pallets.pages.dev/favicon.ico',
+        telephone: '+1-817-330-9020',
+        email: 'support@suncitypalletsliquidation.com',
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: '328 Thomas Pl',
+          addressLocality: 'Everman',
+          addressRegion: 'TX',
+          postalCode: '76140',
+          addressCountry: 'US',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: 32.6285,
+          longitude: -97.2917,
+        },
+        contactPoint: [
+          {
+            '@type': 'ContactPoint',
+            telephone: '+1-817-330-9020',
+            contactType: 'customer service',
+            areaServed: 'US',
+            availableLanguage: ['English', 'Spanish'],
+          },
+        ],
+      },
+      {
+        '@type': 'WebSite',
+        '@id': 'https://liquidation-pallets.pages.dev/#website',
+        url: 'https://liquidation-pallets.pages.dev',
+        name: 'Liquidation Pallets USA',
+        publisher: {
+          '@id': 'https://liquidation-pallets.pages.dev/#organization',
+        },
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: 'https://liquidation-pallets.pages.dev/pallets?search={search_term_string}',
+          'query-input': 'required name=search_term_string',
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="en" className="h-full antialiased">
-      <body className={`${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col font-sans bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+      </head>
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col font-sans bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100`}
+      >
         <CartProvider>
           <Navbar />
-          <main className="flex-1">
-            {children}
-          </main>
+          <main className="flex-1">{children}</main>
           <Footer />
           <CartDrawer />
         </CartProvider>

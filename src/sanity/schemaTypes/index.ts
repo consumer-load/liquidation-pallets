@@ -7,6 +7,8 @@ import { reviewSchema } from './review';
 import { bannerSchema } from './banner';
 import { faqItemSchema } from './faqItem';
 import { siteSettingsSchema } from './siteSettings';
+import { seoSchema } from './seo';
+import { productStructuredDataSchema } from './productStructuredData';
 
 export const schemaTypes = [
   palletSchema,
@@ -18,4 +20,6 @@ export const schemaTypes = [
   bannerSchema,
   faqItemSchema,
   siteSettingsSchema,
+  seoSchema,
+  productStructuredDataSchema,
 ];

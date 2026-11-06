@@ -1,33 +1,47 @@
-export const palletSchema = {
+import { defineType, defineField } from 'sanity';
+
+export const palletSchema = defineType({
   name: 'pallet',
   title: 'Liquidation Pallet',
   type: 'document',
+  icon: () => '📦',
+  groups: [
+    { name: 'general', title: '📦 General Info', default: true },
+    { name: 'specs', title: '⚖️ Specs & Logistics' },
+    { name: 'media', title: '🖼️ Media' },
+    { name: 'seo', title: '🔍 SEO & Meta' },
+    { name: 'schema', title: '📊 Schema.org (JSON-LD)' },
+  ],
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Pallet Title',
       type: 'string',
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
+      group: 'general',
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'slug',
       title: 'Slug (URL)',
       type: 'slug',
+      group: 'general',
       options: {
         source: 'title',
         maxLength: 96,
       },
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'sku',
       title: 'SKU / Pallet ID',
       type: 'string',
-    },
-    {
+      group: 'general',
+    }),
+    defineField({
       name: 'category',
       title: 'Category',
       type: 'string',
+      group: 'general',
       options: {
         list: [
           'Consumer Electronics',
@@ -39,30 +53,34 @@ export const palletSchema = {
           'General Merchandise',
         ],
       },
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'categoryRef',
       title: 'Category Reference',
       type: 'reference',
       to: [{ type: 'category' }],
-    },
-    {
+      group: 'general',
+    }),
+    defineField({
       name: 'retailerRef',
       title: 'Retailer Brand Reference',
       type: 'reference',
       to: [{ type: 'retailer' }],
-    },
-    {
+      group: 'general',
+    }),
+    defineField({
       name: 'tags',
       title: 'Product Tags',
       type: 'array',
+      group: 'general',
       of: [{ type: 'reference', to: [{ type: 'tag' }] }],
-    },
-    {
+    }),
+    defineField({
       name: 'condition',
       title: 'Condition Grade',
       type: 'string',
+      group: 'general',
       options: {
         list: [
           'Brand New',
@@ -73,85 +91,112 @@ export const palletSchema = {
           'Salvage / As-Is',
         ],
       },
-      validation: (Rule: any) => Rule.required(),
-    },
-    {
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
       name: 'sourceRetailer',
       title: 'Source Retailer',
       type: 'string',
+      group: 'general',
       options: {
         list: ['Amazon', 'Target', 'The Home Depot', 'Walmart', 'Wayfair', 'Costco', 'Major Wholesale'],
       },
-    },
-    {
+    }),
+    defineField({
       name: 'price',
       title: 'Wholesale Price ($)',
       type: 'number',
-      validation: (Rule: any) => Rule.required().positive(),
-    },
-    {
+      group: 'general',
+      validation: (rule) => rule.required().positive(),
+    }),
+    defineField({
       name: 'msrp',
       title: 'Estimated Retail MSRP ($)',
       type: 'number',
-      validation: (Rule: any) => Rule.required().positive(),
-    },
-    {
+      group: 'general',
+      validation: (rule) => rule.required().positive(),
+    }),
+    defineField({
       name: 'pieceCount',
       title: 'Total Piece Count',
       type: 'number',
-    },
-    {
+      group: 'specs',
+    }),
+    defineField({
       name: 'weightLbs',
       title: 'Estimated Weight (Lbs)',
       type: 'number',
-    },
-    {
+      group: 'specs',
+    }),
+    defineField({
       name: 'dimensions',
       title: 'Dimensions (e.g., 48x40x54 in)',
       type: 'string',
-    },
-    {
+      group: 'specs',
+    }),
+    defineField({
       name: 'fobLocation',
       title: 'FOB Shipping Warehouse',
       type: 'string',
+      group: 'specs',
       options: {
         list: ['Dallas, TX', 'Atlanta, GA', 'Indianapolis, IN', 'Las Vegas, NV', 'Philadelphia, PA'],
       },
-    },
-    {
-      name: 'images',
-      title: 'Pallet Images',
-      type: 'array',
-      of: [{ type: 'image', options: { hotspot: true } }],
-    },
-    {
-      name: 'description',
-      title: 'Description',
-      type: 'text',
-    },
-    {
-      name: 'features',
-      title: 'Highlights / Key Features',
-      type: 'array',
-      of: [{ type: 'string' }],
-    },
-    {
-      name: 'isFeatured',
-      title: 'Featured On Homepage',
-      type: 'boolean',
-      initialValue: false,
-    },
-    {
-      name: 'isHotDeal',
-      title: 'Hot Deal / Flash Clearance',
-      type: 'boolean',
-      initialValue: false,
-    },
-    {
+    }),
+    defineField({
       name: 'stockAvailable',
       title: 'Pallets Available in Stock',
       type: 'number',
+      group: 'specs',
       initialValue: 1,
-    },
+    }),
+    defineField({
+      name: 'images',
+      title: 'Pallet Images',
+      type: 'array',
+      group: 'media',
+      of: [{ type: 'image', options: { hotspot: true } }],
+    }),
+    defineField({
+      name: 'description',
+      title: 'Description',
+      type: 'text',
+      group: 'general',
+    }),
+    defineField({
+      name: 'features',
+      title: 'Highlights / Key Features',
+      type: 'array',
+      group: 'general',
+      of: [{ type: 'string' }],
+    }),
+    defineField({
+      name: 'isFeatured',
+      title: 'Featured On Homepage',
+      type: 'boolean',
+      group: 'general',
+      initialValue: false,
+    }),
+    defineField({
+      name: 'isHotDeal',
+      title: 'Hot Deal / Flash Clearance',
+      type: 'boolean',
+      group: 'general',
+      initialValue: false,
+    }),
+    // 🔍 SEO & Meta Fields Group
+    defineField({
+      name: 'seo',
+      title: 'SEO Meta Settings',
+      type: 'seo',
+      group: 'seo',
+    }),
+    // 📊 Schema.org / JSON-LD Structured Data Group
+    defineField({
+      name: 'structuredData',
+      title: 'Product Schema.org Structured Data',
+      type: 'productStructuredData',
+      group: 'schema',
+    }),
   ],
-};
+});

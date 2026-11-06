@@ -62,6 +62,23 @@ export interface Pallet {
   isHotDeal?: boolean;
   stockAvailable: number;
   createdAt: string;
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    metaKeywords?: string[];
+    canonicalUrl?: string;
+    noIndex?: boolean;
+  };
+  structuredData?: {
+    brandName?: string;
+    gtin?: string;
+    mpn?: string;
+    itemCondition?: string;
+    availability?: string;
+    priceValidUntil?: string;
+    ratingValue?: number;
+    reviewCount?: number;
+  };
 }
 
 export interface CartItem {
