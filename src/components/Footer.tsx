@@ -43,7 +43,7 @@ export default function Footer() {
               Get Notified When New Truckloads & Pallets Drop
             </h3>
             <p className="text-xs text-neutral-400 mt-1">
-              Top-tier Amazon & Big Box liquidation lots sell out in hours. Subscribe for instant notifications.
+              Top-tier Amazon, Target & Big Box liquidation lots sell out in hours. Subscribe for instant notifications.
             </p>
           </div>
 
@@ -83,28 +83,59 @@ export default function Footer() {
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white">
+              <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold">
                 <Package className="w-6 h-6" />
               </div>
-              <span className="text-xl font-black tracking-tight text-white">
-                LIQUIDATION<span className="text-blue-500">PALLETS</span>
-              </span>
+              <div>
+                <span className="text-lg font-black tracking-tight text-white block leading-tight">
+                  SUNCITY<span className="text-blue-500">PALLETS</span>
+                </span>
+                <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">
+                  Liquidation Store LLC
+                </span>
+              </div>
             </div>
-            <p className="text-sm text-neutral-400 leading-relaxed max-w-sm">
-              Your direct wholesale source for surplus inventory, customer returns, overstock, and closeout truckloads from America&apos;s leading e-commerce retailers and department stores.
+            <p className="text-xs text-neutral-400 leading-relaxed max-w-sm">
+              SUNCITY PALLETS LIQUIDATION STORE LLC is Everman, TX&apos;s premier wholesale liquidator, operating under Vendovi, Inc. (Est. 2008). Registered USPTO Class 35 Service Mark (Reg. No. 0,806,021,894).
             </p>
-            <div className="flex items-center gap-2 text-xs text-neutral-400">
-              <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              Manifest Guaranteed • LTL Freight Arranged
+            <div className="space-y-1.5 text-xs text-neutral-400 font-mono">
+              <div className="flex items-center gap-2">
+                <MapPin className="w-3.5 h-3.5 text-rose-500 shrink-0" />
+                <span>328 Thomas Pl, Everman, TX 76140, USA</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                <span>WhatsApp: +1 (817) 330-9020</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
+                <span>info@suncitypalletsliquidation.com</span>
+              </div>
             </div>
+          </div>
+
+          {/* Quick Links (Exact as requested) */}
+          <div>
+            <h4 className="text-xs font-black text-white uppercase tracking-wider mb-4">
+              Quick Links
+            </h4>
+            <ul className="space-y-2.5 text-xs text-neutral-400">
+              <li><Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link></li>
+              <li><Link href="/refund-policy" className="hover:text-white transition">Refund Policy</Link></li>
+              <li><Link href="/terms-of-use" className="hover:text-white transition">Terms of Use</Link></li>
+              <li><Link href="/shipping-policy" className="hover:text-white transition">Shipping Policy</Link></li>
+              <li><Link href="/faqs" className="hover:text-white transition">FAQs</Link></li>
+              <li><Link href="/contact" className="hover:text-white transition">Contact</Link></li>
+              <li><Link href="/about-us" className="hover:text-white transition">About Us</Link></li>
+            </ul>
           </div>
 
           {/* Catalog Categories */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-              Categories
+            <h4 className="text-xs font-black text-white uppercase tracking-wider mb-4">
+              Wholesale Lots
             </h4>
-            <ul className="space-y-2 text-sm text-neutral-400">
+            <ul className="space-y-2.5 text-xs text-neutral-400">
               <li><Link href="/pallets?category=Consumer Electronics" className="hover:text-white transition">Consumer Electronics</Link></li>
               <li><Link href="/pallets?category=Power Tools & Hardware" className="hover:text-white transition">Power Tools & Hardware</Link></li>
               <li><Link href="/pallets?category=Home & Kitchen" className="hover:text-white transition">Home & Kitchen</Link></li>
@@ -114,43 +145,30 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Warehouse FOB Locations */}
+          {/* Logistics & D1 Database */}
           <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-              FOB Warehouses
+            <h4 className="text-xs font-black text-white uppercase tracking-wider mb-4">
+              Buyer Portal
             </h4>
-            <ul className="space-y-2 text-sm text-neutral-400">
-              <li className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-blue-400" /> Dallas, TX (Central Hub)</li>
-              <li className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-blue-400" /> Atlanta, GA (East Hub)</li>
-              <li className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-blue-400" /> Indianapolis, IN (Midwest)</li>
-              <li className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-blue-400" /> Las Vegas, NV (West Hub)</li>
-              <li className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-blue-400" /> Philadelphia, PA (Northeast)</li>
-            </ul>
-          </div>
-
-          {/* Quick Support & Platform */}
-          <div>
-            <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-4">
-              Buyer Resources
-            </h4>
-            <ul className="space-y-2 text-sm text-neutral-400">
-              <li><Link href="/shipping" className="hover:text-white transition">Freight & LTL Guide</Link></li>
-              <li><Link href="/quote" className="hover:text-white transition">Request Custom Quote</Link></li>
-              <li><Link href="/admin/orders" className="hover:text-white transition text-blue-400 font-medium">Cloudflare D1 Orders</Link></li>
-              <li><a href="#how-it-works" className="hover:text-white transition">How It Works</a></li>
-              <li><a href="#faq" className="hover:text-white transition">Wholesale FAQ</a></li>
+            <ul className="space-y-2.5 text-xs text-neutral-400">
+              <li><Link href="/quote" className="hover:text-white transition">Request Truckload Quote</Link></li>
+              <li><Link href="/shipping" className="hover:text-white transition">Freight & LTL Guidelines</Link></li>
+              <li><Link href="/admin/orders" className="hover:text-white transition text-blue-400 font-bold">Cloudflare D1 Orders</Link></li>
+              <li><a href="https://wa.me/18173309020" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline">Instant WhatsApp Chat</a></li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-neutral-900 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
-          <p>© {new Date().getFullYear()} Liquidation Pallets Inc. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} SUNCITY PALLETS LIQUIDATION STORE LLC. All rights reserved.</p>
           <div className="flex gap-4">
-            <span>Powered by Next.js & Sanity CMS</span>
+            <Link href="/privacy-policy" className="hover:text-neutral-400">Privacy</Link>
             <span>•</span>
-            <span>Hosted on Cloudflare Pages (pages.dev)</span>
+            <Link href="/refund-policy" className="hover:text-neutral-400">Refunds</Link>
             <span>•</span>
-            <span>Cloudflare D1 SQL</span>
+            <Link href="/terms-of-use" className="hover:text-neutral-400">Terms</Link>
+            <span>•</span>
+            <Link href="/shipping-policy" className="hover:text-neutral-400">Shipping</Link>
           </div>
         </div>
       </div>
