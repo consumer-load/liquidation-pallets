@@ -1,9 +1,18 @@
 import React from 'react';
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import Hero from '@/components/Hero';
 import PalletCard from '@/components/PalletCard';
 import { getPallets } from '@/sanity/client';
 import { categoriesList } from '@/data/mockPallets';
+
+export const metadata: Metadata = {
+  title: 'Liquidation Pallets USA | Wholesale Overstock, Returns & Closeout Truckloads',
+  description: 'Buy direct wholesale liquidation pallets, verified customer returns, and excess overstock at up to 90% below retail MSRP. Nationwide LTL freight shipping from Everman, TX.',
+  alternates: {
+    canonical: 'https://liquidation-pallets.pages.dev/',
+  },
+};
 import { 
   ArrowRight, 
   Truck, 

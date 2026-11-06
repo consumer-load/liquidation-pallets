@@ -1,2 +1,35 @@
-/admin/orders/*  /admin/orders/index.html  200
-/admin/*  /admin/index.html  200
+# =========================================================
+# 301 Moved Permanently SEO Canonical Redirects
+# =========================================================
+
+# Policy & Company aliases
+/faq                 /faqs/             301
+/faq/                /faqs/             301
+/shipping            /shipping-policy/  301
+/shipping/           /shipping-policy/  301
+/about               /about-us/         301
+/about/              /about-us/         301
+/contact-us          /contact/          301
+/contact-us/         /contact/          301
+/terms               /terms-of-use/     301
+/terms/              /terms-of-use/     301
+/privacy             /privacy-policy/   301
+/privacy/            /privacy-policy/   301
+/returns             /refund-policy/    301
+/returns/            /refund-policy/    301
+/refund              /refund-policy/    301
+/refund/             /refund-policy/    301
+
+# Product & Catalog legacy aliases
+/pallet              /pallets/          301
+/pallet/             /pallets/          301
+/products            /pallets/          301
+/products/           /pallets/          301
+/shop                /pallets/          301
+/shop/               /pallets/          301
+
+# =========================================================
+# SPA Rewrites for Sanity Studio & Admin
+# =========================================================
+/admin/orders/*      /admin/orders/index.html  200
+/admin/*             /admin/index.html         200

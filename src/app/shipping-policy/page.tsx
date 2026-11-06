@@ -2,9 +2,14 @@ import React from 'react';
 import PolicyLayout from '@/components/PolicyLayout';
 import { Truck, Clock, ShieldCheck, MapPin, PackageCheck } from 'lucide-react';
 
-export const metadata = {
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
   title: 'Shipping Policy | SUNCITY PALLETS LIQUIDATION STORE LLC',
   description: 'Freight, LTL shipping, and delivery timelines for wholesale liquidation pallets.',
+  alternates: {
+    canonical: 'https://liquidation-pallets.pages.dev/shipping-policy/',
+  },
 };
 
 export default function ShippingPolicyPage() {

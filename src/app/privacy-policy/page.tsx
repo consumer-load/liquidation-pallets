@@ -1,9 +1,14 @@
 import React from 'react';
 import PolicyLayout from '@/components/PolicyLayout';
 
-export const metadata = {
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
   title: 'Privacy Policy | SUNCITY PALLETS LIQUIDATION STORE LLC',
   description: 'Privacy Policy for Suncity Pallets Liquidation Store LLC.',
+  alternates: {
+    canonical: 'https://liquidation-pallets.pages.dev/privacy-policy/',
+  },
 };
 
 export default function PrivacyPolicyPage() {

@@ -13,9 +13,14 @@ import {
   Boxes 
 } from 'lucide-react';
 
-export const metadata = {
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
   title: 'About Us | SUNCITY PALLETS LIQUIDATION STORE LLC',
   description: 'Premier wholesale liquidator specializing in high-yield liquidation pallets, surplus inventory, and secondary retail merchandise.',
+  alternates: {
+    canonical: 'https://liquidation-pallets.pages.dev/about-us/',
+  },
 };
 
 export default function AboutUsPage() {

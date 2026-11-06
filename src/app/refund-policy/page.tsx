@@ -2,9 +2,14 @@ import React from 'react';
 import PolicyLayout from '@/components/PolicyLayout';
 import { Check, X, ShieldAlert, FileSpreadsheet } from 'lucide-react';
 
-export const metadata = {
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
   title: 'Refund & Return Policy | SUNCITY PALLETS LIQUIDATION STORE LLC',
   description: 'Complete 30-day return, refund, and exchange guidelines for wholesale liquidation merchandise.',
+  alternates: {
+    canonical: 'https://liquidation-pallets.pages.dev/refund-policy/',
+  },
 };
 
 export default function RefundPolicyPage() {

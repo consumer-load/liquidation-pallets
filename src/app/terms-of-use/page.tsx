@@ -1,9 +1,14 @@
 import React from 'react';
 import PolicyLayout from '@/components/PolicyLayout';
 
-export const metadata = {
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
   title: 'Terms of Use | SUNCITY PALLETS LIQUIDATION STORE LLC',
   description: 'Terms and conditions governing the purchase of wholesale liquidation merchandise.',
+  alternates: {
+    canonical: 'https://liquidation-pallets.pages.dev/terms-of-use/',
+  },
 };
 
 export default function TermsOfUsePage() {
