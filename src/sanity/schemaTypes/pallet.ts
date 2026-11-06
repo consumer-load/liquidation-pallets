@@ -42,6 +42,24 @@ export const palletSchema = {
       validation: (Rule: any) => Rule.required(),
     },
     {
+      name: 'categoryRef',
+      title: 'Category Reference',
+      type: 'reference',
+      to: [{ type: 'category' }],
+    },
+    {
+      name: 'retailerRef',
+      title: 'Retailer Brand Reference',
+      type: 'reference',
+      to: [{ type: 'retailer' }],
+    },
+    {
+      name: 'tags',
+      title: 'Product Tags',
+      type: 'array',
+      of: [{ type: 'reference', to: [{ type: 'tag' }] }],
+    },
+    {
       name: 'condition',
       title: 'Condition Grade',
       type: 'string',

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
 import { 
   X, 
@@ -16,6 +17,7 @@ import {
 import { DeliveryType } from '@/types';
 
 export default function CartDrawer() {
+  const pathname = usePathname();
   const {
     cart,
     isCartOpen,
@@ -30,7 +32,7 @@ export default function CartDrawer() {
     totalItems,
   } = useCart();
 
-  if (!isCartOpen) return null;
+  if (!isCartOpen || pathname?.startsWith('/admin')) return null;
 
   return (
     <div className="fixed inset-0 z-50 overflow-hidden">

@@ -4,7 +4,7 @@ interface Env {
   };
 }
 
-export const onRequest: PagesFunction<Env> = async (context) => {
+export const onRequest = async (context: { request: Request; env: Env }) => {
   const response = await context.env.ASSETS.fetch(context.request);
   if (response.status !== 404) {
     return response;
