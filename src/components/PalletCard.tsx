@@ -60,7 +60,7 @@ export default function PalletCard({ pallet }: PalletCardProps) {
         {/* Top Badges */}
         <div className="relative aspect-4/3 overflow-hidden bg-neutral-100 dark:bg-neutral-800">
           <img
-            src={pallet.images[0] || 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=800&q=80'}
+            src={pallet.images?.[0] || 'https://images.unsplash.com/photo-1550009158-9ebf69173e03?auto=format&fit=crop&w=800&q=80'}
             alt={pallet.title}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             loading="lazy"
