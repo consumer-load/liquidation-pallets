@@ -10,7 +10,7 @@
     {
       "binding": "DB",
       "database_name": "liquidation_pallets_db",
-      "database_id": "00000000-0000-0000-0000-000000000000"
+      "database_id": "c45e45f4-ebfa-4a9f-9bf0-b4933c186b32"
     }
   ],
   "vars": {

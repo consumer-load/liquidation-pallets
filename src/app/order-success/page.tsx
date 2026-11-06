@@ -1,15 +1,14 @@
+'use client';
+
 import React, { Suspense } from 'react';
 import Link from 'next/link';
-import { CheckCircle2, Truck, FileText, ArrowRight, Database, Download } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
+import { CheckCircle2, Truck, FileText, ArrowRight, Database } from 'lucide-react';
 
-interface Props {
-  searchParams: Promise<{ orderNumber?: string; storage?: string }>;
-}
-
-async function OrderSuccessContent({ searchParams }: Props) {
-  const params = await searchParams;
-  const orderNumber = params.orderNumber || 'LP-948210';
-  const storage = params.storage || 'cloudflare_d1';
+function OrderSuccessContent() {
+  const searchParams = useSearchParams();
+  const orderNumber = searchParams.get('orderNumber') || 'LP-948210';
+  const storage = searchParams.get('storage') || 'cloudflare_d1';
 
   return (
     <div className="min-h-screen bg-neutral-50 dark:bg-neutral-950 py-16">
@@ -82,10 +81,10 @@ async function OrderSuccessContent({ searchParams }: Props) {
   );
 }
 
-export default function OrderSuccessPage({ searchParams }: Props) {
+export default function OrderSuccessPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen p-10 text-center">Loading confirmation...</div>}>
-      <OrderSuccessContent searchParams={searchParams} />
+    <Suspense fallback={<div className="min-h-screen p-10 text-center text-xs">Loading order confirmation...</div>}>
+      <OrderSuccessContent />
     </Suspense>
   );
 }
