@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Package, Mail, MapPin, Phone, ShieldCheck, ArrowRight, CheckCircle2 } from 'lucide-react';
+import BrandLogo from '@/components/BrandLogo';
 
 export default function Footer() {
   const pathname = usePathname();
@@ -88,34 +89,24 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           {/* Brand Info */}
           <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-blue-600 flex items-center justify-center text-white font-bold">
-                <Package className="w-6 h-6" />
-              </div>
-              <div>
-                <span className="text-lg font-black tracking-tight text-white block leading-tight">
-                  SUNCITY<span className="text-blue-500">PALLETS</span>
-                </span>
-                <span className="text-[10px] text-neutral-400 uppercase tracking-wider block">
-                  Liquidation Store LLC
-                </span>
-              </div>
-            </div>
+            <Link href="/" className="inline-block group">
+              <BrandLogo theme="dark" size="md" />
+            </Link>
             <p className="text-xs text-neutral-400 leading-relaxed max-w-sm">
-              SUNCITY PALLETS LIQUIDATION STORE LLC is Everman, TX&apos;s premier wholesale liquidator, operating under Vendovi, Inc. (Est. 2008). Registered USPTO Class 35 Service Mark (Reg. No. 0,806,021,894).
+              amzpalletsliquidation.com is America&apos;s trusted wholesale liquidator specializing in verified high-yield Amazon returns, contractor tool lots, overstock truckloads, and secondary retail store merchandise.
             </p>
             <div className="space-y-1.5 text-xs text-neutral-400 font-mono">
               <div className="flex items-center gap-2">
-                <MapPin className="w-3.5 h-3.5 text-rose-500 shrink-0" />
-                <span>328 Thomas Pl, Everman, TX 76140, USA</span>
+                <MapPin className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                <span>Primary Logistics Hub: Dallas-Fort Worth, TX, USA</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                <span>WhatsApp: +1 (817) 330-9020</span>
+                <span>Support & WhatsApp: +1 (817) 330-9020</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-blue-400 shrink-0" />
-                <span>info@suncitypalletsliquidation.com</span>
+                <span>support@amzpalletsliquidation.com</span>
               </div>
             </div>
           </div>
@@ -166,7 +157,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-neutral-900 mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
-          <p>© {new Date().getFullYear()} SUNCITY PALLETS LIQUIDATION STORE LLC. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} amzpalletsliquidation.com. All rights reserved.</p>
           <div className="flex gap-4">
             <Link href="/privacy-policy" className="hover:text-neutral-400">Privacy</Link>
             <span>•</span>

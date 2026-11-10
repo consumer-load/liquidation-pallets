@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import FaqsClient from './FaqsClient';
 
 export const metadata: Metadata = {
-  title: 'Frequently Asked Questions (FAQs) | SUNCITY PALLETS LIQUIDATION STORE LLC',
+  title: 'Frequently Asked Questions (FAQs) | AMZ Pallets Liquidation (amzpalletsliquidation.com)',
   description: 'Find answers about purchasing liquidation pallets, freight delivery, manifests, resale certificates, and payments.',
   alternates: {
     canonical: 'https://liquidation-pallets.pages.dev/faqs/',
@@ -13,17 +13,17 @@ export const metadata: Metadata = {
 const faqData = [
   {
     category: 'Sourcing & Wholesale',
-    question: 'Where does SUNCITY PALLETS LIQUIDATION STORE LLC source their products?',
-    answer: 'SUNCITY PALLETS LIQUIDATION STORE LLC partners with top tier-one retailers from all over the United States (including Amazon, Target, The Home Depot, Walmart, and Costco). Our sourcing team procures merchandise directly under contract so we can pass on industry-leading liquidation discounts of 75% to 90% below retail MSRP.',
+    question: 'Where does AMZ Pallets Liquidation (amzpalletsliquidation.com) source their products?',
+    answer: 'AMZ Pallets Liquidation (amzpalletsliquidation.com) partners with top tier-one retailers from all over the United States (including Amazon, Target, The Home Depot, Walmart, and Costco). Our sourcing team procures merchandise directly under contract so we can pass on industry-leading liquidation discounts of 75% to 90% below retail MSRP.',
   },
   {
     category: 'Purchasing & Licensing',
     question: 'Is a resale certificate required for purchase?',
-    answer: 'No! SUNCITY PALLETS LIQUIDATION STORE LLC does not require a state reseller certificate or wholesale license to buy individual pallets or truckloads. Anyone looking to source high-margin inventory for eBay, Amazon, Mercari, flea markets, or discount stores can purchase.',
+    answer: 'No! AMZ Pallets Liquidation (amzpalletsliquidation.com) does not require a state reseller certificate or wholesale license to buy individual pallets or truckloads. Anyone looking to source high-margin inventory for eBay, Amazon, Mercari, flea markets, or discount stores can purchase.',
   },
   {
     category: 'Payments & Checkout',
-    question: 'What payment methods does SUNCITY PALLETS LIQUIDATION STORE LLC accept?',
+    question: 'What payment methods does AMZ Pallets Liquidation (amzpalletsliquidation.com) accept?',
     answer: 'We accept Bank Wire Transfer, ACH Corporate Transfer, Credit/Debit Cards, CashApp, Zelle, Venmo, and PayPal. For large multi-pallet and full truckload orders, bank wire transfer or ACH is recommended for zero processing delays.',
   },
   {

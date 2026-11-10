@@ -117,7 +117,7 @@ export default function PolicyLayout({ title, subtitle, children }: PolicyLayout
                 </a>
 
                 <a
-                  href="mailto:info@suncitypalletsliquidation.com"
+                  href="mailto:support@amzpalletsliquidation.com"
                   className="flex items-center gap-3 p-3 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 text-neutral-800 dark:text-neutral-200 hover:border-blue-500 hover:text-blue-600 transition"
                 >
                   <div className="w-8 h-8 rounded-lg bg-blue-100 dark:bg-blue-950/60 text-blue-600 flex items-center justify-center shrink-0">
@@ -125,7 +125,7 @@ export default function PolicyLayout({ title, subtitle, children }: PolicyLayout
                   </div>
                   <div>
                     <div className="text-[10px] text-neutral-400 font-semibold uppercase">Email Support</div>
-                    <div className="font-bold truncate max-w-[180px]">info@suncitypalletsliquidation.com</div>
+                    <div className="font-bold truncate max-w-[180px]">support@amzpalletsliquidation.com</div>
                   </div>
                 </a>
 

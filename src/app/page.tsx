@@ -7,8 +7,8 @@ import { getPallets } from '@/sanity/client';
 import { categoriesList } from '@/data/mockPallets';
 
 export const metadata: Metadata = {
-  title: 'Liquidation Pallets USA | Wholesale Overstock, Returns & Closeout Truckloads',
-  description: 'Buy direct wholesale liquidation pallets, verified customer returns, and excess overstock at up to 90% below retail MSRP. Nationwide LTL freight shipping from Everman, TX.',
+  title: 'AMZ Pallets Liquidation | amzpalletsliquidation.com Wholesale Truckloads & Pallets',
+  description: 'Buy direct wholesale liquidation pallets, verified Amazon customer returns, and excess overstock at up to 90% below retail MSRP. Nationwide LTL freight shipping.',
   alternates: {
     canonical: 'https://liquidation-pallets.pages.dev/',
   },

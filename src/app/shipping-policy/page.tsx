@@ -5,7 +5,7 @@ import { Truck, Clock, ShieldCheck, MapPin, PackageCheck } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Shipping Policy | SUNCITY PALLETS LIQUIDATION STORE LLC',
+  title: 'Shipping Policy | AMZ Pallets Liquidation (amzpalletsliquidation.com)',
   description: 'Freight, LTL shipping, and delivery timelines for wholesale liquidation pallets.',
   alternates: {
     canonical: 'https://liquidation-pallets.pages.dev/shipping-policy/',
@@ -20,7 +20,7 @@ export default function ShippingPolicyPage() {
     >
       <div className="space-y-6 text-xs sm:text-sm leading-relaxed">
         <p>
-          Shipping wholesale liquidation pallets is often not as straightforward as shipping regular small parcels. At <strong>SUNCITY PALLETS LIQUIDATION STORE LLC</strong>, we use a variety of commercial containment methods to package and dispatch our merchandise, including master cases, heavy-duty Gaylords, and industrial shrink-wrapped pallets.
+          Shipping wholesale liquidation pallets is often not as straightforward as shipping regular small parcels. At <strong>AMZ Pallets Liquidation (amzpalletsliquidation.com)</strong>, we use a variety of commercial containment methods to package and dispatch our merchandise, including master cases, heavy-duty Gaylords, and industrial shrink-wrapped pallets.
         </p>
 
         <p>
@@ -86,7 +86,7 @@ export default function ShippingPolicyPage() {
           Buyers can arrange free self-pickup at our primary distribution yard:
         </p>
         <div className="p-4 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-mono">
-          <strong>SUNCITY PALLETS LIQUIDATION STORE LLC</strong><br />
+          <strong>AMZ Pallets Liquidation (amzpalletsliquidation.com)</strong><br />
           328 Thomas Pl, Everman, TX 76140, USA<br />
           Loading Hours: Monday – Friday, 8:30 AM to 4:30 PM CST<br />
           Appointments required 24 hours in advance.

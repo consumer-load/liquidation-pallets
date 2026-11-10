@@ -4,8 +4,8 @@ import PolicyLayout from '@/components/PolicyLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | SUNCITY PALLETS LIQUIDATION STORE LLC',
-  description: 'Privacy Policy for Suncity Pallets Liquidation Store LLC.',
+  title: 'Privacy Policy | AMZ Pallets Liquidation (amzpalletsliquidation.com)',
+  description: 'Privacy Policy for AMZ Pallets Liquidation (amzpalletsliquidation.com).',
   alternates: {
     canonical: 'https://liquidation-pallets.pages.dev/privacy-policy/',
   },
@@ -15,20 +15,20 @@ export default function PrivacyPolicyPage() {
   return (
     <PolicyLayout
       title="Privacy Policy"
-      subtitle="SUNCITY PALLETS LIQUIDATION STORE LLC — Transparency in Data Protection & Commercial Operations."
+      subtitle="AMZ Pallets Liquidation (amzpalletsliquidation.com) — Transparency in Data Protection & Commercial Operations."
     >
       <div className="space-y-6 text-xs sm:text-sm leading-relaxed">
         <div className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700 text-xs">
           <p>
-            <strong>Legal Entity:</strong> SUNCITY PALLETS LIQUIDATION STORE LLC<br />
+            <strong>Legal Entity:</strong> AMZ Pallets Liquidation (amzpalletsliquidation.com)<br />
             <strong>Entity Registry No:</strong> 0806021894 | Incorporated in the United States<br />
             <strong>Commercial Facility:</strong> 328 Thomas Pl, Everman, TX 76140, USA<br />
-            <strong>Official Website:</strong> https://www.suncitypalletsliquidation.com
+            <strong>Official Website:</strong> https://amzpalletsliquidation.com
           </p>
         </div>
 
         <p>
-          At <strong>SUNCITY PALLETS LIQUIDATION STORE LLC</strong>, one of our main priorities is the privacy of our visitors and wholesale partners. This Privacy Policy document contains types of information that is collected and recorded by SUNCITY PALLETS LIQUIDATION STORE LLC and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact our legal and customer support department.
+          At <strong>AMZ Pallets Liquidation (amzpalletsliquidation.com)</strong>, one of our main priorities is the privacy of our visitors and wholesale partners. This Privacy Policy document contains types of information that is collected and recorded by AMZ Pallets Liquidation (amzpalletsliquidation.com) and how we use it. If you have additional questions or require more information about our Privacy Policy, do not hesitate to contact our legal and customer support department.
         </p>
 
         <h3 className="text-base font-bold text-neutral-900 dark:text-white pt-2">
@@ -78,9 +78,9 @@ export default function PrivacyPolicyPage() {
           For any questions regarding our privacy practices or data handling:
         </p>
         <div className="p-4 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs space-y-1 font-mono">
-          <div>SUNCITY PALLETS LIQUIDATION STORE LLC</div>
+          <div>AMZ Pallets Liquidation (amzpalletsliquidation.com)</div>
           <div>328 Thomas Pl, Everman, TX 76140, USA</div>
-          <div>Email: info@suncitypalletsliquidation.com</div>
+          <div>Email: support@amzpalletsliquidation.com</div>
           <div>WhatsApp / Phone: +1 (817) 330-9020</div>
         </div>
       </div>

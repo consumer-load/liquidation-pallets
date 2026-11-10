@@ -93,7 +93,7 @@ export default async function PalletDetailPage({ params }: Props) {
       availability: pallet.structuredData?.availability || 'https://schema.org/InStock',
       seller: {
         '@type': 'Organization',
-        name: 'Suncity Pallets Liquidation Store LLC',
+        name: 'AMZ Pallets Liquidation',
       },
     },
     aggregateRating: {

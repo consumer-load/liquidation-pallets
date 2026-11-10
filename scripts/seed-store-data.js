@@ -152,7 +152,7 @@ async function seed() {
       customerName: 'David Kowalski',
       company: 'Midwest Hardware Outlet (Chicago, IL)',
       rating: 5,
-      comment: 'We buy 2 truckloads a month from Suncity / Vendovi. Consistent quality, fast freight quotes, and straightforward wire/card payment options.',
+      comment: 'We buy 2 truckloads a month from AMZ Pallets / Vendovi. Consistent quality, fast freight quotes, and straightforward wire/card payment options.',
       verifiedBuyer: true,
       featured: true,
       date: '2026-11-04',
@@ -205,7 +205,7 @@ async function seed() {
     tagline: 'Wholesale Truckloads, Customer Returns & Overstock Pallets',
     supportPhone: '+1 (817) 330-9020',
     supportWhatsapp: '+1 817-330-9020',
-    supportEmail: 'support@suncitypalletsliquidation.com',
+    supportEmail: 'support@amzpalletsliquidation.com',
     warehouseAddress: '328 Thomas Pl, Everman, TX 76140',
     announcementBar: '🔥 Nationwide LTL Freight Available • Verified Manifests on High-Value Lots • Call +1 (817) 330-9020',
   };

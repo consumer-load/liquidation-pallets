@@ -19,13 +19,15 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://liquidation-pallets.pages.dev'),
   title: {
-    default: 'Liquidation Pallets USA | Wholesale Overstock, Returns & Closeout Truckloads',
-    template: '%s | Liquidation Pallets USA',
+    default: 'AMZ Pallets Liquidation | amzpalletsliquidation.com Wholesale Surplus Lots',
+    template: '%s | amzpalletsliquidation.com',
   },
   description:
-    'Buy direct wholesale liquidation pallets, verified customer returns, and excess overstock at up to 90% below retail MSRP. Nationwide LTL freight shipping from Everman, TX.',
+    'Buy direct wholesale liquidation pallets, verified Amazon customer returns, and excess overstock at up to 90% below retail MSRP. Nationwide LTL freight shipping.',
   keywords: [
-    'liquidation pallets',
+    'amz pallets liquidation',
+    'amzpalletsliquidation.com',
+    'amazon liquidation pallets',
     'wholesale pallets',
     'amazon returns pallet',
     'target liquidation',
@@ -33,17 +35,28 @@ export const metadata: Metadata = {
     'overstock pallets',
     'truckload liquidation',
     'surplus merchandise',
-    'bulk pallets texas',
   ],
-  authors: [{ name: 'SUNCITY PALLETS LIQUIDATION STORE LLC' }],
-  creator: 'Suncity Pallets Liquidation',
-  publisher: 'Suncity Pallets Liquidation',
+  authors: [{ name: 'amzpalletsliquidation.com' }],
+  creator: 'AMZ Pallets Liquidation',
+  publisher: 'amzpalletsliquidation.com',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/icon.svg', type: 'image/svg+xml' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     type: 'website',
     locale: 'en_US',
     url: 'https://liquidation-pallets.pages.dev',
-    siteName: 'Liquidation Pallets USA',
-    title: 'Liquidation Pallets USA | Wholesale Overstock, Returns & Closeout Truckloads',
+    siteName: 'AMZ Pallets Liquidation',
+    title: 'AMZ Pallets Liquidation | amzpalletsliquidation.com Wholesale Overstock',
     description:
       'Direct wholesale truckloads & liquidation pallets from Amazon, Target, Home Depot, and Costco. Up to 90% off retail MSRP. Nationwide LTL shipping.',
     images: [
@@ -51,7 +64,7 @@ export const metadata: Metadata = {
         url: 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1200&h=630&q=80',
         width: 1200,
         height: 630,
-        alt: 'Liquidation Pallets USA Wholesale Warehouse',
+        alt: 'AMZ Pallets Liquidation Wholesale Warehouse',
       },
     ],
   },
@@ -87,12 +100,12 @@ export default function RootLayout({
       {
         '@type': 'Organization',
         '@id': 'https://liquidation-pallets.pages.dev/#organization',
-        name: 'SUNCITY PALLETS LIQUIDATION STORE LLC',
-        alternateName: 'Liquidation Pallets USA',
+        name: 'AMZ Pallets Liquidation',
+        alternateName: 'amzpalletsliquidation.com',
         url: 'https://liquidation-pallets.pages.dev',
-        logo: 'https://liquidation-pallets.pages.dev/favicon.ico',
+        logo: 'https://liquidation-pallets.pages.dev/logo.svg',
         telephone: '+1-817-330-9020',
-        email: 'support@suncitypalletsliquidation.com',
+        email: 'support@amzpalletsliquidation.com',
         address: {
           '@type': 'PostalAddress',
           streetAddress: '328 Thomas Pl',

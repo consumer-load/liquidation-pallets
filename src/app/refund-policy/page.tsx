@@ -5,7 +5,7 @@ import { Check, X, ShieldAlert, FileSpreadsheet } from 'lucide-react';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Refund & Return Policy | SUNCITY PALLETS LIQUIDATION STORE LLC',
+  title: 'Refund & Return Policy | AMZ Pallets Liquidation (amzpalletsliquidation.com)',
   description: 'Complete 30-day return, refund, and exchange guidelines for wholesale liquidation merchandise.',
   alternates: {
     canonical: 'https://liquidation-pallets.pages.dev/refund-policy/',
@@ -68,7 +68,7 @@ export default function RefundPolicyPage() {
           1. Countries & Policy Scope
         </h3>
         <p>
-          Thank you for shopping at <strong>SUNCITY PALLETS LIQUIDATION STORE LLC</strong>. We are committed to providing transparent policies for all orders shipped within the United States.
+          Thank you for shopping at <strong>AMZ Pallets Liquidation (amzpalletsliquidation.com)</strong>. We are committed to providing transparent policies for all orders shipped within the United States.
         </p>
         <ul className="list-disc pl-5 space-y-1 text-neutral-600 dark:text-neutral-400">
           <li><strong>Defective Products:</strong> Items that arrived damaged during carrier transit, have manufacturing flaws, or were sent incorrectly.</li>
@@ -104,7 +104,7 @@ export default function RefundPolicyPage() {
           3. Return Method, Restocking Fee & Refund Timeline
         </h3>
         <ul className="list-disc pl-5 space-y-1.5 text-neutral-600 dark:text-neutral-400">
-          <li><strong>Return Address:</strong> SUNCITY PALLETS LIQUIDATION STORE LLC, 328 Thomas Pl, Everman, TX 76140, USA.</li>
+          <li><strong>Return Address:</strong> AMZ Pallets Liquidation (amzpalletsliquidation.com), 328 Thomas Pl, Everman, TX 76140, USA.</li>
           <li><strong>Return Shipping:</strong> Customers are solely responsible for obtaining and paying for return freight transit. Original freight fees are non-refundable.</li>
           <li><strong>Restocking Fee:</strong> A standard 20% restocking fee is deducted from the refunded product amount.</li>
           <li><strong>Processing Time:</strong> Once returned cargo arrives at our Everman facility and passes intake inspection, refunds are credited within <strong>7 business days</strong>.</li>
@@ -131,7 +131,7 @@ export default function RefundPolicyPage() {
           Contact our Everman logistics office with your Order / Invoice Number:
         </p>
         <div className="p-4 rounded-xl bg-neutral-100 dark:bg-neutral-800 text-xs font-mono space-y-1">
-          <div>Email: info@suncitypalletsliquidation.com</div>
+          <div>Email: support@amzpalletsliquidation.com</div>
           <div>WhatsApp / Phone: +1 (817) 330-9020</div>
           <div>Hours: Mon-Fri 8:00 AM – 5:00 PM CST</div>
         </div>

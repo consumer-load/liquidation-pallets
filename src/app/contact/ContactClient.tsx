@@ -97,7 +97,7 @@ export default function ContactPage() {
 
             {/* Card 2: Email */}
             <a
-              href="mailto:info@suncitypalletsliquidation.com"
+              href="mailto:support@amzpalletsliquidation.com"
               className="p-6 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm flex items-start gap-4 hover:border-blue-500 transition block"
             >
               <div className="w-12 h-12 rounded-xl bg-blue-100 dark:bg-blue-950/60 text-blue-600 flex items-center justify-center shrink-0">
@@ -106,7 +106,7 @@ export default function ContactPage() {
               <div>
                 <span className="text-xs uppercase font-bold text-neutral-400">Email Inquiries</span>
                 <div className="text-base font-bold text-neutral-900 dark:text-white mt-0.5 truncate">
-                  info@suncitypalletsliquidation.com
+                  support@amzpalletsliquidation.com
                 </div>
                 <p className="text-xs text-neutral-500 mt-1">
                   Average response time: under 2 business hours.
@@ -122,7 +122,7 @@ export default function ContactPage() {
               <div>
                 <span className="text-xs uppercase font-bold text-neutral-400">Physical Yard & Storefront</span>
                 <div className="text-base font-bold text-neutral-900 dark:text-white mt-0.5">
-                  SUNCITY PALLETS LIQUIDATION STORE LLC
+                  AMZ Pallets Liquidation (amzpalletsliquidation.com)
                 </div>
                 <p className="text-xs text-neutral-600 dark:text-neutral-400 mt-1">
                   328 Thomas Pl, Everman, TX 76140, USA

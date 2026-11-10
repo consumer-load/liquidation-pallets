@@ -55,7 +55,7 @@ export const siteSettingsSchema = defineType({
       title: 'Support Email',
       type: 'string',
       group: 'contact',
-      initialValue: 'support@suncitypalletsliquidation.com',
+      initialValue: 'support@amzpalletsliquidation.com',
     }),
     defineField({
       name: 'warehouseAddress',
@@ -113,7 +113,7 @@ export const siteSettingsSchema = defineType({
       title: 'Legal Business Name',
       type: 'string',
       group: 'schema',
-      initialValue: 'SUNCITY PALLETS LIQUIDATION STORE LLC',
+      initialValue: 'AMZ Pallets Liquidation (amzpalletsliquidation.com)',
     }),
     defineField({
       name: 'usptoReg',

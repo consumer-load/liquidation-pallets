@@ -4,7 +4,7 @@ import PolicyLayout from '@/components/PolicyLayout';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Terms of Use | SUNCITY PALLETS LIQUIDATION STORE LLC',
+  title: 'Terms of Use | AMZ Pallets Liquidation (amzpalletsliquidation.com)',
   description: 'Terms and conditions governing the purchase of wholesale liquidation merchandise.',
   alternates: {
     canonical: 'https://liquidation-pallets.pages.dev/terms-of-use/',
@@ -15,11 +15,11 @@ export default function TermsOfUsePage() {
   return (
     <PolicyLayout
       title="Terms of Use"
-      subtitle="Terms & Conditions of Commercial Use for SUNCITY PALLETS LIQUIDATION STORE LLC."
+      subtitle="Terms & Conditions of Commercial Use for AMZ Pallets Liquidation (amzpalletsliquidation.com)."
     >
       <div className="space-y-6 text-xs sm:text-sm leading-relaxed">
         <p>
-          Welcome to <strong>SUNCITY PALLETS LIQUIDATION STORE LLC</strong> (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). SUNCITY PALLETS LIQUIDATION STORE LLC is a Limited Liability Company incorporated in the United States with registry number 0806021894. Our principal commercial facility is situated at 328 Thomas Pl, Everman, TX 76140, USA.
+          Welcome to <strong>AMZ Pallets Liquidation (amzpalletsliquidation.com)</strong> (&quot;Company&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;). AMZ Pallets Liquidation (amzpalletsliquidation.com) is a Limited Liability Company incorporated in the United States with registry number 0806021894. Our principal commercial facility is situated at 328 Thomas Pl, Everman, TX 76140, USA.
         </p>
 
         <p>
@@ -37,7 +37,7 @@ export default function TermsOfUsePage() {
           2. Wholesale Nature of Merchandise
         </h3>
         <p>
-          All buyers acknowledge that goods sold through SUNCITY PALLETS LIQUIDATION STORE LLC constitute liquidation merchandise, including customer returns, shelf pulls, excess inventory, and closeout overstock derived from major retail distributors. While manifests provide accurate itemized projections, liquidation goods are sold in wholesale lots subject to customary industry tolerances.
+          All buyers acknowledge that goods sold through AMZ Pallets Liquidation (amzpalletsliquidation.com) constitute liquidation merchandise, including customer returns, shelf pulls, excess inventory, and closeout overstock derived from major retail distributors. While manifests provide accurate itemized projections, liquidation goods are sold in wholesale lots subject to customary industry tolerances.
         </p>
 
         <h3 className="text-base font-bold text-neutral-900 dark:text-white pt-2">
@@ -56,7 +56,7 @@ export default function TermsOfUsePage() {
           4. Registered Trademark Protection
         </h3>
         <p>
-          SUNCITY PALLETS LIQUIDATION is a federally registered service mark (Reg. No. 0,806,021,894 / RN # 6717534) on the Principal Register of the United States Patent and Trademark Office (USPTO), covering Class 35 (Freight liquidation of goods of others, and retail store services featuring secondary products). All trademarks, logos, and digital manifest formats belong strictly to the Company and its licensors.
+          AMZ Pallets Liquidation is a federally registered service mark (Reg. No. 0,806,021,894 / RN # 6717534) on the Principal Register of the United States Patent and Trademark Office (USPTO), covering Class 35 (Freight liquidation of goods of others, and retail store services featuring secondary products). All trademarks, logos, and digital manifest formats belong strictly to the Company and its licensors.
         </p>
 
         <h3 className="text-base font-bold text-neutral-900 dark:text-white pt-2">

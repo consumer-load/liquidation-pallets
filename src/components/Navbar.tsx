@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
+import BrandLogo from '@/components/BrandLogo';
 import { 
   Package, 
   ShoppingCart, 
@@ -65,18 +66,8 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20 gap-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0 group">
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-600 to-indigo-700 flex items-center justify-center text-white shadow-md group-hover:scale-105 transition-transform font-black">
-              <Package className="w-6 h-6" />
-            </div>
-            <div>
-              <span className="text-xl font-black tracking-tight text-neutral-900 dark:text-white block leading-tight">
-                SUNCITY<span className="text-blue-600">PALLETS</span>
-              </span>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-neutral-500 block">
-                Liquidation Store LLC
-              </span>
-            </div>
+          <Link href="/" className="flex items-center shrink-0 group">
+            <BrandLogo size="md" />
           </Link>
 
           {/* Search bar */}

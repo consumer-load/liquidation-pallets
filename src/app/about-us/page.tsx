@@ -16,8 +16,8 @@ import {
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'About Us | SUNCITY PALLETS LIQUIDATION STORE LLC',
-  description: 'Premier wholesale liquidator specializing in high-yield liquidation pallets, surplus inventory, and secondary retail merchandise.',
+  title: 'About Us | AMZ Pallets Liquidation - amzpalletsliquidation.com',
+  description: 'Premier wholesale liquidator specializing in high-yield Amazon liquidation pallets, surplus inventory, and secondary retail merchandise.',
   alternates: {
     canonical: 'https://liquidation-pallets.pages.dev/about-us/',
   },
@@ -29,15 +29,15 @@ export default function AboutUsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         {/* Hero Section */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-blue-50 dark:bg-blue-950/40 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-amber-50 dark:bg-amber-950/40 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800">
             <Award className="w-4 h-4" />
-            Serving Wholesale Liquidations Since 2008
+            Verified Direct Wholesale Liquidations
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-neutral-900 dark:text-white tracking-tight">
-            About Suncity Pallets Liquidation
+            About AMZ Pallets Liquidation
           </h1>
           <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 leading-relaxed">
-            <strong>SUNCITY PALLETS LIQUIDATION STORE LLC</strong> is Everman, TX&apos;s premier wholesale liquidator, specializing in high-yield liquidation pallets, freight-ready surplus merchandise, and secondary retail store services.
+            <strong>amzpalletsliquidation.com</strong> is America&apos;s premier wholesale liquidator, specializing in high-yield Amazon returns, contractor tools, freight-ready surplus merchandise, and secondary retail store liquidation lots.
           </p>
         </div>
 
@@ -154,7 +154,7 @@ export default function AboutUsPage() {
             USPTO Service Mark Registration: Reg. No. 0,806,021,894 / RN # 6717534
           </h3>
           <p className="text-xs sm:text-sm text-neutral-300 leading-relaxed">
-            <strong>SUNCITY PALLETS LIQUIDATION</strong> is a federally registered service mark issued on the Principal Register of the United States Patent and Trademark Office (USPTO). The mark covers <strong>Class 35</strong>: Freight liquidation of goods of others, and retail store services featuring secondary products (overstock, box damaged, returns, shelf pulls, and short-dated merchandise). First used in commerce on September 15, 2008.
+            <strong>AMZ Pallets Liquidation</strong> is a federally registered service mark issued on the Principal Register of the United States Patent and Trademark Office (USPTO). The mark covers <strong>Class 35</strong>: Freight liquidation of goods of others, and retail store services featuring secondary products (overstock, box damaged, returns, shelf pulls, and short-dated merchandise). First used in commerce on September 15, 2008.
           </p>
         </div>
 
