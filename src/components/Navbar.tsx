@@ -46,26 +46,26 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800">
+      <header className="sticky top-0 z-40 w-full max-w-full overflow-x-clip bg-white/95 dark:bg-neutral-900/95 backdrop-blur-md border-b border-neutral-200 dark:border-neutral-800">
         {/* Top Wholesale Trust Bar */}
-        <div className="bg-neutral-950 text-neutral-300 text-xs py-1.5 px-4 hidden md:block border-b border-neutral-800">
-          <div className="max-w-7xl mx-auto flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1.5 text-blue-400 font-semibold">
-                <Truck className="w-3.5 h-3.5" /> Everman, TX Distribution Yard & Nationwide LTL
+        <div className="bg-neutral-950 text-neutral-300 text-xs py-1.5 px-4 hidden md:block border-b border-neutral-800 overflow-x-clip">
+          <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3 truncate">
+              <span className="flex items-center gap-1.5 text-blue-400 font-semibold truncate">
+                <Truck className="w-3.5 h-3.5 shrink-0" /> Everman, TX Distribution Yard & Nationwide LTL
               </span>
-              <span className="text-neutral-500">|</span>
-              <span className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" /> USPTO Reg. No. 0,806,021,894 (Class 35)
+              <span className="text-neutral-600 hidden xl:inline">|</span>
+              <span className="hidden xl:flex items-center gap-1.5 text-neutral-400">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400 shrink-0" /> USPTO Reg. No. 0,806,021,894
               </span>
             </div>
-            <div className="flex items-center gap-4 text-neutral-400">
+            <div className="flex items-center gap-4 text-neutral-400 shrink-0">
               <a href="https://wa.me/18173309020" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-emerald-400 hover:underline">
-                <Phone className="w-3 h-3" /> WhatsApp: (817) 330-9020
+                <Phone className="w-3 h-3 shrink-0" /> WhatsApp: (817) 330-9020
               </a>
-              <span className="text-neutral-500">|</span>
-              <Link href="/admin/orders" className="hover:text-white flex items-center gap-1 transition text-blue-400">
-                <ClipboardList className="w-3.5 h-3.5" /> D1 Database Orders
+              <span className="text-neutral-600 hidden sm:inline">|</span>
+              <Link href="/admin/orders" className="hover:text-white hidden sm:flex items-center gap-1 transition text-blue-400">
+                <ClipboardList className="w-3.5 h-3.5 shrink-0" /> D1 Orders
               </Link>
             </div>
           </div>
@@ -73,28 +73,28 @@ export default function Navbar() {
 
         {/* Main Header */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20 gap-3 sm:gap-4">
+          <div className="flex items-center justify-between h-20 gap-3">
             {/* Logo */}
             <Link href="/" className="flex items-center shrink-0 group">
               <BrandLogo size="md" />
             </Link>
 
-            {/* Fixed Search Button - Never Squeezed or Truncated */}
+            {/* Responsive Search Trigger Button */}
             <button
               type="button"
               onClick={() => setIsSearchOpen(true)}
-              className="flex items-center gap-2 sm:gap-2.5 px-3 sm:px-3.5 py-2 rounded-xl bg-neutral-100 hover:bg-neutral-200/90 dark:bg-neutral-800 dark:hover:bg-neutral-700/90 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition shrink-0 cursor-pointer shadow-2xs group"
+              className="flex items-center gap-2 px-3 py-2 rounded-xl bg-neutral-100 hover:bg-neutral-200/90 dark:bg-neutral-800 dark:hover:bg-neutral-700/90 border border-neutral-200/80 dark:border-neutral-700/80 text-neutral-500 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-white transition shrink-0 cursor-pointer shadow-2xs group"
               aria-label="Search Pallets"
             >
               <Search className="w-4 h-4 text-amber-500 group-hover:scale-110 transition-transform shrink-0" />
               <span className="text-xs font-semibold whitespace-nowrap">Search Pallets...</span>
-              <kbd className="hidden xl:inline-flex items-center text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-neutral-400">
+              <kbd className="hidden 2xl:inline-flex items-center text-[10px] font-mono font-bold px-1.5 py-0.5 rounded bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 text-neutral-400">
                 Ctrl K
               </kbd>
             </button>
 
-            {/* Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-4 xl:gap-6 text-xs xl:text-sm font-semibold text-neutral-700 dark:text-neutral-300">
+            {/* Navigation Links (Visible on xl screens to prevent header crowding/overflow) */}
+            <nav className="hidden xl:flex items-center gap-5 2xl:gap-7 text-xs 2xl:text-sm font-semibold text-neutral-700 dark:text-neutral-300">
               <Link href="/pallets" className="hover:text-blue-600 dark:hover:text-blue-400 transition whitespace-nowrap">
                 Browse Pallets
               </Link>
@@ -113,11 +113,11 @@ export default function Navbar() {
             </nav>
 
             {/* Right Action buttons */}
-            <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+            <div className="flex items-center gap-2 shrink-0">
               {/* Track Shipment Link */}
               <Link
                 href="/track"
-                className="hidden md:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:text-amber-500 transition whitespace-nowrap"
+                className="hidden xl:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:text-amber-500 transition whitespace-nowrap"
               >
                 <Truck className="w-4 h-4 text-amber-500 shrink-0" />
                 <span>Track Freight</span>
@@ -127,22 +127,23 @@ export default function Navbar() {
               {isLoggedIn && customer ? (
                 <Link
                   href="/account"
-                  className="flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-amber-700 dark:text-amber-400 font-bold text-xs hover:bg-amber-100 transition whitespace-nowrap shrink-0"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-amber-700 dark:text-amber-400 font-bold text-xs hover:bg-amber-100 transition whitespace-nowrap shrink-0"
                 >
                   <User className="w-4 h-4 shrink-0" />
-                  <span className="hidden sm:inline truncate max-w-[90px]">{customer.name}</span>
+                  <span className="hidden sm:inline truncate max-w-[85px] 2xl:max-w-[120px]">{customer.name}</span>
                   <span className="sm:hidden">Orders</span>
                 </Link>
               ) : (
                 <Link
                   href="/account/login"
-                  className="flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-xl bg-neutral-900 dark:bg-neutral-800 hover:bg-neutral-800 text-white font-bold text-xs transition whitespace-nowrap shrink-0"
+                  className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-neutral-900 dark:bg-neutral-800 hover:bg-neutral-800 text-white font-bold text-xs transition whitespace-nowrap shrink-0"
                 >
                   <User className="w-4 h-4 text-amber-400 shrink-0" />
                   <span>Buyer Login</span>
                 </Link>
               )}
 
+              {/* Pallet Cart Button */}
               <button
                 type="button"
                 onClick={() => setIsCartOpen(true)}
@@ -150,7 +151,7 @@ export default function Navbar() {
                 aria-label="View Cart"
               >
                 <ShoppingCart className="w-5 h-5 text-amber-500 shrink-0" />
-                <span className="hidden sm:inline font-bold text-xs whitespace-nowrap">Pallet Cart</span>
+                <span className="hidden lg:inline font-bold text-xs whitespace-nowrap">Pallet Cart</span>
                 {totalItems > 0 && (
                   <span className="px-2 py-0.5 text-xs font-black bg-amber-500 text-neutral-950 rounded-full">
                     {totalItems}
@@ -158,10 +159,10 @@ export default function Navbar() {
                 )}
               </button>
 
-              {/* Mobile Hamburger Button */}
+              {/* Hamburger Button (Shown on screens < xl to access menu without overflow) */}
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="lg:hidden p-2 text-neutral-600 dark:text-neutral-300 rounded-lg shrink-0"
+                className="xl:hidden p-2 text-neutral-600 dark:text-neutral-300 rounded-lg shrink-0"
                 aria-label="Toggle navigation menu"
               >
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -187,9 +188,9 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Drawer Navigation */}
+        {/* Responsive Drawer Navigation */}
         {mobileMenuOpen && (
-          <div className="lg:hidden border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4 space-y-2 text-xs">
+          <div className="xl:hidden border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4 space-y-2 text-xs">
             {/* Quick Account Buttons in Mobile */}
             <div className="grid grid-cols-2 gap-2 pb-3 mb-2 border-b border-neutral-100 dark:border-neutral-800">
               <Link
