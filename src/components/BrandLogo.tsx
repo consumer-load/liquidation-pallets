@@ -97,18 +97,19 @@ export default function BrandLogo({
           fill="none"
         />
 
-        {/* AMZ Inset */}
+        {/* AMAZON Inset */}
         <text
           x="36"
           y="32"
           fontFamily="system-ui, -apple-system, sans-serif"
-          fontSize="7"
+          fontSize="5"
           fontWeight="900"
+          letterSpacing="0.2"
           fill="#FFFFFF"
           textAnchor="middle"
           transform="skewY(22)"
         >
-          AMZ
+          AMAZON
         </text>
       </svg>
     </div>
@@ -123,7 +124,7 @@ export default function BrandLogo({
       {IconMark}
       <div className="flex flex-col">
         <div className={`font-black tracking-tight leading-none ${textSizes[size]}`}>
-          <span className="text-amber-500 font-extrabold tracking-normal">AMZ</span>{' '}
+          <span className="text-amber-500 font-extrabold tracking-normal">AMAZON</span>{' '}
           <span
             className={
               theme === 'light'
