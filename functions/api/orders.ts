@@ -15,6 +15,14 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 
     const orderId = `ord_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`;
     const orderNumber = body.orderNumber || `LP-${Math.floor(100000 + Math.random() * 900000)}`;
+    const trackingNumber = `PRO-${Math.floor(10000000 + Math.random() * 90000000)}`;
+    const bolNumber = `BOL-${Math.floor(100000 + Math.random() * 900000)}`;
+    const carrier = 'R+L Carriers LTL Freight';
+
+    // Calculate estimated delivery date: 5 business days from now
+    const estDate = new Date();
+    estDate.setDate(estDate.getDate() + 5);
+    const estimatedDelivery = estDate.toISOString().split('T')[0];
 
     if (context.env && context.env.DB) {
       const orderStmt = context.env.DB.prepare(`
@@ -22,8 +30,8 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
           id, order_number, customer_name, customer_email, customer_phone,
           company_name, shipping_address, city, state, zip_code, delivery_type,
           subtotal, freight_cost, tax_amount, total_amount, payment_method,
-          notes
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          notes, tracking_number, carrier, bol_number, estimated_delivery
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `).bind(
         orderId,
         orderNumber,
@@ -41,7 +49,11 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         body.taxAmount || 0,
         body.totalAmount,
         body.paymentMethod,
-        body.notes || null
+        body.notes || null,
+        trackingNumber,
+        carrier,
+        bolNumber,
+        estimatedDelivery
       );
 
       const itemStmts = body.items.map((item: any, index: number) => {
@@ -68,6 +80,8 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
           success: true,
           orderId,
           orderNumber,
+          trackingNumber,
+          bolNumber,
           storage: 'cloudflare_d1',
         }),
         { status: 201, headers: { 'Content-Type': 'application/json' } }
@@ -79,6 +93,8 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         success: true,
         orderId,
         orderNumber,
+        trackingNumber,
+        bolNumber,
         storage: 'mock_preview',
       }),
       { status: 201, headers: { 'Content-Type': 'application/json' } }
@@ -91,21 +107,55 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
   }
 };
 
-export const onRequestGet = async (context: { env: Env }) => {
+export const onRequestGet = async (context: { request: Request; env: Env }) => {
   try {
+    const url = new URL(context.request.url);
+    const email = url.searchParams.get('email');
+    const orderNumber = url.searchParams.get('orderNumber');
+
     if (context.env && context.env.DB) {
-      const { results } = await context.env.DB.prepare(`
+      if (orderNumber) {
+        const orderResult = await context.env.DB.prepare(`
+          SELECT * FROM orders WHERE order_number = ? LIMIT 1
+        `).bind(orderNumber).first();
+
+        if (orderResult) {
+          const { results: items } = await context.env.DB.prepare(`
+            SELECT * FROM order_items WHERE order_id = ?
+          `).bind(orderResult.id).all();
+
+          return new Response(
+            JSON.stringify({ order: orderResult, items: items || [] }),
+            { status: 200, headers: { 'Content-Type': 'application/json' } }
+          );
+        }
+      }
+
+      if (email) {
+        const { results: userOrders } = await context.env.DB.prepare(`
+          SELECT * FROM orders WHERE LOWER(customer_email) = LOWER(?) ORDER BY created_at DESC
+        `).bind(email).all();
+
+        return new Response(
+          JSON.stringify({ orders: userOrders || [] }),
+          { status: 200, headers: { 'Content-Type': 'application/json' } }
+        );
+      }
+
+      const { results: allOrders } = await context.env.DB.prepare(`
         SELECT * FROM orders ORDER BY created_at DESC LIMIT 50
       `).all();
-      return new Response(JSON.stringify({ orders: results || [] }), {
-        status: 200,
-        headers: { 'Content-Type': 'application/json' },
-      });
+
+      return new Response(
+        JSON.stringify({ orders: allOrders || [] }),
+        { status: 200, headers: { 'Content-Type': 'application/json' } }
+      );
     }
-    return new Response(JSON.stringify({ orders: [] }), {
-      status: 200,
-      headers: { 'Content-Type': 'application/json' },
-    });
+
+    return new Response(
+      JSON.stringify({ orders: [] }),
+      { status: 200, headers: { 'Content-Type': 'application/json' } }
+    );
   } catch (error: any) {
     return new Response(
       JSON.stringify({ error: 'Failed to fetch orders', details: error.message }),

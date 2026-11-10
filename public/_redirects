@@ -2,6 +2,12 @@
 # 301 Moved Permanently SEO Canonical Redirects
 # =========================================================
 
+# Customer Account & Tracking aliases
+/login               /account/login/    301
+/login/              /account/login/    301
+/tracking            /track/            301
+/tracking/           /track/            301
+
 # Policy & Company aliases
 /faq                 /faqs/             301
 /faq/                /faqs/             301

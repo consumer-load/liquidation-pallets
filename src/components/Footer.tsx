@@ -142,16 +142,18 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Logistics & D1 Database */}
+          {/* Logistics & Buyer Portal */}
           <div>
             <h4 className="text-xs font-black text-white uppercase tracking-wider mb-4">
               Buyer Portal
             </h4>
             <ul className="space-y-2.5 text-xs text-neutral-400">
+              <li><Link href="/account/login" className="hover:text-amber-400 transition font-bold text-white">Buyer Login & Portal</Link></li>
+              <li><Link href="/account" className="hover:text-white transition">My Orders & Invoices</Link></li>
+              <li><Link href="/track" className="hover:text-amber-400 transition font-bold text-amber-500">Track LTL Freight</Link></li>
               <li><Link href="/quote" className="hover:text-white transition">Request Truckload Quote</Link></li>
-              <li><Link href="/shipping" className="hover:text-white transition">Freight & LTL Guidelines</Link></li>
-              <li><Link href="/admin/orders" className="hover:text-white transition text-blue-400 font-bold">Cloudflare D1 Orders</Link></li>
-              <li><a href="https://wa.me/18173309020" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:underline">Instant WhatsApp Chat</a></li>
+              <li><Link href="/shipping-policy" className="hover:text-white transition">Freight & Delivery Policy</Link></li>
+              <li><Link href="/admin/orders" className="hover:text-white transition text-blue-400 font-bold">Cloudflare D1 Dashboard</Link></li>
             </ul>
           </div>
         </div>

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { CartProvider } from '@/context/CartContext';
+import { CustomerAuthProvider } from '@/context/CustomerAuthContext';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import CartDrawer from '@/components/CartDrawer';
@@ -157,12 +158,14 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} min-h-full flex flex-col font-sans bg-neutral-50 text-neutral-900 dark:bg-neutral-950 dark:text-neutral-100`}
       >
-        <CartProvider>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <CartDrawer />
-        </CartProvider>
+        <CustomerAuthProvider>
+          <CartProvider>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <CartDrawer />
+          </CartProvider>
+        </CustomerAuthProvider>
       </body>
     </html>
   );

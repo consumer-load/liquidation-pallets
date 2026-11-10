@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { useRouter, usePathname } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
+import { useCustomerAuth } from '@/context/CustomerAuthContext';
 import BrandLogo from '@/components/BrandLogo';
 import { 
   Package, 
@@ -15,11 +16,13 @@ import {
   X, 
   Truck, 
   ShieldCheck, 
-  ClipboardList 
+  ClipboardList,
+  User
 } from 'lucide-react';
 
 export default function Navbar() {
   const { totalItems, setIsCartOpen } = useCart();
+  const { customer, isLoggedIn } = useCustomerAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const router = useRouter();
@@ -105,17 +108,46 @@ export default function Navbar() {
           </nav>
 
           {/* Right Action buttons */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
+            {/* Track Shipment Link */}
+            <Link
+              href="/track"
+              className="hidden lg:flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-neutral-700 dark:text-neutral-300 hover:text-amber-500 transition"
+            >
+              <Truck className="w-4 h-4 text-amber-500" />
+              <span>Track Freight</span>
+            </Link>
+
+            {/* Buyer Account / Login Link */}
+            {isLoggedIn && customer ? (
+              <Link
+                href="/account"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-800 text-amber-700 dark:text-amber-400 font-bold text-xs hover:bg-amber-100 transition"
+              >
+                <User className="w-4 h-4" />
+                <span className="hidden sm:inline truncate max-w-[100px]">{customer.name}</span>
+                <span className="sm:hidden">Orders</span>
+              </Link>
+            ) : (
+              <Link
+                href="/account/login"
+                className="flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-neutral-900 dark:bg-neutral-800 hover:bg-neutral-800 text-white font-bold text-xs transition"
+              >
+                <User className="w-4 h-4 text-amber-400" />
+                <span>Buyer Login</span>
+              </Link>
+            )}
+
             <button
               type="button"
               onClick={() => setIsCartOpen(true)}
               className="relative p-2.5 rounded-xl bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-800 dark:text-white transition flex items-center gap-2"
               aria-label="View Cart"
             >
-              <ShoppingCart className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <ShoppingCart className="w-5 h-5 text-amber-500" />
               <span className="hidden sm:inline font-bold text-xs">Pallet Cart</span>
               {totalItems > 0 && (
-                <span className="px-2 py-0.5 text-xs font-black bg-blue-600 text-white rounded-full">
+                <span className="px-2 py-0.5 text-xs font-black bg-amber-500 text-neutral-950 rounded-full">
                   {totalItems}
                 </span>
               )}
@@ -149,6 +181,26 @@ export default function Navbar() {
       {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="md:hidden border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-4 space-y-2 text-xs">
+          {/* Quick Account Buttons in Mobile */}
+          <div className="grid grid-cols-2 gap-2 pb-3 mb-2 border-b border-neutral-100 dark:border-neutral-800">
+            <Link
+              href="/track"
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 px-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-500 font-bold text-xs flex items-center justify-center gap-1.5"
+            >
+              <Truck className="w-4 h-4" />
+              Track Freight
+            </Link>
+            <Link
+              href={isLoggedIn ? "/account" : "/account/login"}
+              onClick={() => setMobileMenuOpen(false)}
+              className="py-2.5 px-3 rounded-xl bg-neutral-900 dark:bg-neutral-800 text-white font-bold text-xs flex items-center justify-center gap-1.5"
+            >
+              <User className="w-4 h-4 text-amber-400" />
+              {isLoggedIn ? 'My Orders' : 'Buyer Login'}
+            </Link>
+          </div>
+
           <Link
             href="/pallets"
             onClick={() => setMobileMenuOpen(false)}
