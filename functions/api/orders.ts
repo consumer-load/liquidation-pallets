@@ -1,6 +1,63 @@
 interface Env {
   DB: any;
   RESEND_API_KEY?: string;
+  SANITY_API_TOKEN?: string;
+  SANITY_PROJECT_ID?: string;
+  SANITY_DATASET?: string;
+}
+
+// Automatically sync orders to Sanity Studio CMS
+async function syncOrderToSanity(orderData: any, env: Env) {
+  const sanityToken = env?.SANITY_API_TOKEN || 'sknUOOdux4dHClMYHo2Nzcs3jZ1NJUbtX5W5lqMAyJ6STfLzmHoAqQrqqjjEKB6Fr1PsU1oBCrqbriKWkG3nrDUwAxDf575HjBgtOHzEzrtraU371zPXchSQkEcKr6wnvS0BFRk5Hohye3LSDKZpT3YkVYQwq5I6XuEaLszG9yR8UI8hE9kp';
+  const sanityProjectId = env?.SANITY_PROJECT_ID || 'yeyvps37';
+  const sanityDataset = env?.SANITY_DATASET || 'production';
+
+  try {
+    const mutation = {
+      mutations: [
+        {
+          createOrReplace: {
+            _id: `order-${orderData.orderNumber.toLowerCase()}`,
+            _type: 'order',
+            orderNumber: orderData.orderNumber,
+            status: 'processing',
+            customerName: orderData.customerName,
+            customerEmail: orderData.customerEmail,
+            customerPhone: orderData.customerPhone || '',
+            companyName: orderData.companyName || '',
+            totalAmount: Number(orderData.totalAmount),
+            paymentMethod: orderData.paymentMethod || 'wire_transfer',
+            shippingAddress: `${orderData.shippingAddress}, ${orderData.city || ''}, ${orderData.state || ''} ${orderData.zipCode || ''}`.trim(),
+            hasLoadingDock: orderData.deliveryType === 'commercial_dock',
+            trackingNumber: orderData.trackingNumber,
+            carrier: orderData.carrier,
+            bolNumber: orderData.bolNumber,
+            customerPin: orderData.customerPin,
+            items: (orderData.items || []).map((item: any, idx: number) => ({
+              _key: `item_${idx}_${Date.now()}`,
+              palletTitle: item.title,
+              palletSku: item.palletId || item.sku || 'SKU-LOT',
+              quantity: item.quantity || 1,
+              price: item.price || 0,
+            })),
+            notes: orderData.notes || 'Order placed via storefront',
+            createdAt: new Date().toISOString(),
+          },
+        },
+      ],
+    };
+
+    await fetch(`https://${sanityProjectId}.api.sanity.io/v2024-01-01/data/mutate/${sanityDataset}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${sanityToken}`,
+      },
+      body: JSON.stringify(mutation),
+    });
+  } catch (err) {
+    console.error('Failed to sync order to Sanity Studio:', err);
+  }
 }
 
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
@@ -127,6 +184,20 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       }
     }
 
+    // Prepare complete order payload for Sanity CMS
+    const fullOrderPayload = {
+      ...body,
+      orderNumber,
+      trackingNumber,
+      carrier,
+      bolNumber,
+      customerPin,
+      estimatedDelivery,
+    };
+
+    // Auto-sync order directly into Sanity Studio CMS
+    await syncOrderToSanity(fullOrderPayload, context.env);
+
     if (context.env && context.env.DB) {
       const orderStmt = context.env.DB.prepare(`
         INSERT INTO orders (
@@ -188,7 +259,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
           customerPin,
           trackingNumber,
           bolNumber,
-          storage: 'cloudflare_d1',
+          storage: 'cloudflare_d1_and_sanity',
           emailStatus,
         }),
         { status: 201, headers: { 'Content-Type': 'application/json' } }
@@ -204,7 +275,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         customerPin,
         trackingNumber,
         bolNumber,
-        storage: 'mock_preview',
+        storage: 'sanity_cms',
         emailStatus,
       }),
       { status: 201, headers: { 'Content-Type': 'application/json' } }

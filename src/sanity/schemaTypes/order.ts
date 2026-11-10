@@ -55,6 +55,11 @@ export const orderSchema = defineType({
       type: 'number',
     }),
     defineField({
+      name: 'paymentMethod',
+      title: 'Payment Method',
+      type: 'string',
+    }),
+    defineField({
       name: 'shippingAddress',
       title: 'Shipping / Dock Address',
       type: 'text',
@@ -65,6 +70,26 @@ export const orderSchema = defineType({
       title: 'Has Loading Dock / Forklift',
       type: 'boolean',
       initialValue: true,
+    }),
+    defineField({
+      name: 'trackingNumber',
+      title: 'Carrier PRO Tracking #',
+      type: 'string',
+    }),
+    defineField({
+      name: 'carrier',
+      title: 'LTL Freight Carrier',
+      type: 'string',
+    }),
+    defineField({
+      name: 'bolNumber',
+      title: 'Bill of Lading (BOL) #',
+      type: 'string',
+    }),
+    defineField({
+      name: 'customerPin',
+      title: 'Buyer Portal Access PIN',
+      type: 'string',
     }),
     defineField({
       name: 'items',
