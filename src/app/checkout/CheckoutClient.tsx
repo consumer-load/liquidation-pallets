@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useCart } from '@/context/CartContext';
+import { useCustomerAuth } from '@/context/CustomerAuthContext';
 import Link from 'next/link';
 import { 
   Truck, 
@@ -19,6 +20,7 @@ import { DeliveryType } from '@/types';
 
 export default function CheckoutPage() {
   const router = useRouter();
+  const { login } = useCustomerAuth();
   const {
     cart,
     subtotal,
@@ -101,7 +103,14 @@ export default function CheckoutPage() {
       }
 
       clearCart();
-      router.push(`/order-success?orderNumber=${data.orderNumber}&storage=${data.storage}`);
+      // Automatically establish customer session so buyer portal is immediately accessible
+      login(formData.customerEmail, formData.customerName, formData.companyName);
+      
+      const pinParam = data.customerPin ? `&pin=${encodeURIComponent(data.customerPin)}` : '';
+      const emailParam = data.customerEmail ? `&email=${encodeURIComponent(data.customerEmail)}` : '';
+      const trackingParam = data.trackingNumber ? `&tracking=${encodeURIComponent(data.trackingNumber)}` : '';
+      
+      router.push(`/order-success?orderNumber=${data.orderNumber}&storage=${data.storage}${emailParam}${pinParam}${trackingParam}`);
     } catch (err: any) {
       setError(err.message || 'Something went wrong.');
     } finally {

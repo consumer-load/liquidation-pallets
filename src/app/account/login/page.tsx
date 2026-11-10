@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import React, { useState, useEffect, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { useCustomerAuth } from '@/context/CustomerAuthContext';
 import BrandLogo from '@/components/BrandLogo';
@@ -13,17 +13,36 @@ import {
   Building2, 
   Truck, 
   UserCheck, 
-  FileText 
+  Sparkles 
 } from 'lucide-react';
 
-export default function CustomerLoginPage() {
+function CustomerLoginContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const { login, isLoggedIn, customer } = useCustomerAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [companyName, setCompanyName] = useState('');
+
+  const urlEmail = searchParams.get('email') || '';
+  const urlPin = searchParams.get('pin') || '';
+  const urlCompany = searchParams.get('company') || '';
+
+  const [email, setEmail] = useState(urlEmail);
+  const [password, setPassword] = useState(urlPin);
+  const [companyName, setCompanyName] = useState(urlCompany);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [autoLoggingIn, setAutoLoggingIn] = useState(false);
+
+  // Auto-login if accessed via 1-click email link with email & PIN
+  useEffect(() => {
+    if (urlEmail && urlPin && !isLoggedIn) {
+      setAutoLoggingIn(true);
+      const timer = setTimeout(() => {
+        login(urlEmail, urlEmail.split('@')[0], urlCompany || 'Direct Wholesale Buyer');
+        router.push('/account');
+      }, 700);
+      return () => clearTimeout(timer);
+    }
+  }, [urlEmail, urlPin, isLoggedIn, login, router, urlCompany]);
 
   // If already logged in, show quick redirect
   if (isLoggedIn && customer) {
@@ -96,6 +115,18 @@ export default function CustomerLoginPage() {
           </p>
         </div>
 
+        {autoLoggingIn && (
+          <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/40 border border-amber-300 dark:border-amber-700 text-center space-y-1">
+            <div className="flex items-center justify-center gap-2 text-amber-700 dark:text-amber-300 font-bold text-xs">
+              <Sparkles className="w-4 h-4 animate-spin text-amber-500" />
+              1-Click Email Authentication in progress...
+            </div>
+            <p className="text-[11px] text-amber-800 dark:text-amber-400">
+              Validating access PIN for <strong>{urlEmail}</strong>
+            </p>
+          </div>
+        )}
+
         {/* Card Form */}
         <div className="bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 rounded-3xl p-6 sm:p-8 shadow-xl shadow-neutral-900/5 space-y-6">
           {error && (
@@ -144,14 +175,14 @@ export default function CustomerLoginPage() {
                   Password / PIN
                 </label>
                 <span className="text-[10px] text-neutral-400">
-                  (Or enter Order #)
+                  (Sent to your email upon order)
                 </span>
               </div>
               <div className="relative">
                 <Lock className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-neutral-400" />
                 <input
                   type="password"
-                  placeholder="•••••••• or order PIN"
+                  placeholder="•••••••• or order PIN (e.g. AMZ-5821)"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full pl-10 pr-4 py-2.5 text-xs bg-neutral-50 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded-xl focus:outline-hidden focus:ring-2 focus:ring-amber-500"
@@ -203,5 +234,13 @@ export default function CustomerLoginPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function CustomerLoginPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen p-12 text-center text-xs">Loading buyer authentication...</div>}>
+      <CustomerLoginContent />
+    </Suspense>
   );
 }

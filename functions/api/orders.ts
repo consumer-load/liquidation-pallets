@@ -1,5 +1,6 @@
 interface Env {
   DB: any;
+  RESEND_API_KEY?: string;
 }
 
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
@@ -18,11 +19,113 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     const trackingNumber = `PRO-${Math.floor(10000000 + Math.random() * 90000000)}`;
     const bolNumber = `BOL-${Math.floor(100000 + Math.random() * 900000)}`;
     const carrier = 'R+L Carriers LTL Freight';
+    const customerPin = `AMZ-${Math.floor(1000 + Math.random() * 9000)}`;
 
-    // Calculate estimated delivery date: 5 business days from now
+    // Estimated delivery: 5 business days from now
     const estDate = new Date();
     estDate.setDate(estDate.getDate() + 5);
     const estimatedDelivery = estDate.toISOString().split('T')[0];
+
+    // Build Email Body HTML
+    const loginLink = `https://liquidation-pallets.pages.dev/account/login?email=${encodeURIComponent(body.customerEmail)}&pin=${customerPin}`;
+    const trackLink = `https://liquidation-pallets.pages.dev/track?order=${orderNumber}`;
+
+    const emailSubject = `Order Confirmed: ${orderNumber} - Your amzpalletsliquidation.com Buyer Login Credentials`;
+    const emailHtml = `
+      <div style="font-family: Arial, sans-serif; background-color: #f8fafc; padding: 24px; color: #0f172a;">
+        <div style="max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 16px; padding: 32px; border: 1px solid #e2e8f0;">
+          <div style="text-align: center; border-bottom: 2px solid #f1f5f9; padding-bottom: 20px;">
+            <h1 style="color: #0f172a; margin: 0; font-size: 24px;">AMAZON <span style="color: #f59e0b;">PALLETS</span></h1>
+            <p style="color: #64748b; font-size: 12px; margin: 4px 0 0 0; text-transform: uppercase; letter-spacing: 1px;">amzpalletsliquidation.com • Wholesale B2B Logistics</p>
+          </div>
+
+          <div style="padding: 24px 0;">
+            <h2 style="color: #0f172a; font-size: 18px; margin-top: 0;">Thank you for your order, ${body.customerName}!</h2>
+            <p style="color: #475569; font-size: 14px; line-height: 1.6;">
+              Your wholesale liquidation order <strong>#${orderNumber}</strong> has been received and booked into our Dallas-Fort Worth logistics staging facility.
+            </p>
+
+            <!-- LOGIN CREDENTIALS BOX -->
+            <div style="background-color: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 20px; margin: 24px 0;">
+              <h3 style="color: #b45309; margin-top: 0; font-size: 15px;">🔐 Your Wholesale Buyer Portal Login Credentials</h3>
+              <p style="font-size: 13px; color: #78350f; margin-bottom: 12px;">
+                Use these details anytime to access your order history, download official Bill of Lading (BOL), and view item manifests:
+              </p>
+              <table style="width: 100%; font-size: 13px; color: #0f172a;">
+                <tr>
+                  <td style="padding: 4px 0; font-weight: bold; width: 140px;">Portal Login URL:</td>
+                  <td style="padding: 4px 0;"><a href="https://liquidation-pallets.pages.dev/account/login" style="color: #2563eb;">amzpalletsliquidation.com/account/login</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 4px 0; font-weight: bold;">Account Email:</td>
+                  <td style="padding: 4px 0; font-family: monospace; font-size: 14px;"><strong>${body.customerEmail}</strong></td>
+                </tr>
+                <tr>
+                  <td style="padding: 4px 0; font-weight: bold;">Access PIN / Pass:</td>
+                  <td style="padding: 4px 0; font-family: monospace; font-size: 15px; color: #b45309;"><strong>${customerPin}</strong></td>
+                </tr>
+              </table>
+
+              <div style="margin-top: 16px;">
+                <a href="${loginLink}" style="display: inline-block; background-color: #f59e0b; color: #000000; font-weight: bold; font-size: 13px; text-decoration: none; padding: 10px 20px; border-radius: 8px;">
+                  1-Click Auto Login To My Account →
+                </a>
+              </div>
+            </div>
+
+            <!-- FREIGHT & TRACKING BOX -->
+            <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 20px; margin: 24px 0;">
+              <h3 style="color: #166534; margin-top: 0; font-size: 15px;">🚚 Live LTL Freight Dispatch Information</h3>
+              <p style="font-size: 13px; color: #14532d; margin: 4px 0 12px 0;">
+                Carrier: <strong>${carrier}</strong> • Bill of Lading: <strong>${bolNumber}</strong> • PRO: <strong>${trackingNumber}</strong>
+              </p>
+              <a href="${trackLink}" style="display: inline-block; background-color: #0f172a; color: #ffffff; font-weight: bold; font-size: 13px; text-decoration: none; padding: 10px 20px; border-radius: 8px;">
+                Track Live Freight Status →
+              </a>
+            </div>
+
+            <!-- ORDER SUMMARY -->
+            <h3 style="color: #0f172a; font-size: 15px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">Order Summary</h3>
+            <p style="font-size: 13px; color: #475569; margin: 6px 0;"><strong>Shipping Dock:</strong> ${body.shippingAddress}, ${body.city}, ${body.state} ${body.zipCode}</p>
+            <p style="font-size: 13px; color: #475569; margin: 6px 0;"><strong>Freight Method:</strong> ${String(body.deliveryType).toUpperCase()}</p>
+            <p style="font-size: 13px; color: #475569; margin: 6px 0;"><strong>Total Invoice Amount:</strong> $${Number(body.totalAmount).toLocaleString()} USD</p>
+          </div>
+
+          <div style="border-top: 1px solid #e2e8f0; padding-top: 16px; font-size: 11px; color: #94a3b8; text-align: center;">
+            <p style="margin: 0;">AMZ Pallets Liquidation • amzpalletsliquidation.com</p>
+            <p style="margin: 4px 0 0 0;">WhatsApp Logistics Desk: +1 (817) 330-9020 • support@amzpalletsliquidation.com</p>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Attempt to send email via Resend if API key is present in Cloudflare Pages environment
+    let emailStatus = 'prepared';
+    if (context.env?.RESEND_API_KEY) {
+      try {
+        const resendResponse = await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${context.env.RESEND_API_KEY}`,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            from: 'AMZ Pallets Orders <orders@amzpalletsliquidation.com>',
+            to: [body.customerEmail],
+            subject: emailSubject,
+            html: emailHtml,
+          }),
+        });
+        if (resendResponse.ok) {
+          emailStatus = 'sent_via_resend';
+        } else {
+          emailStatus = 'resend_attempted';
+        }
+      } catch (err: any) {
+        console.error('Email send exception:', err);
+        emailStatus = 'error_sending';
+      }
+    }
 
     if (context.env && context.env.DB) {
       const orderStmt = context.env.DB.prepare(`
@@ -30,8 +133,8 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
           id, order_number, customer_name, customer_email, customer_phone,
           company_name, shipping_address, city, state, zip_code, delivery_type,
           subtotal, freight_cost, tax_amount, total_amount, payment_method,
-          notes, tracking_number, carrier, bol_number, estimated_delivery
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          notes, tracking_number, carrier, bol_number, estimated_delivery, customer_pin
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       `).bind(
         orderId,
         orderNumber,
@@ -53,7 +156,8 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         trackingNumber,
         carrier,
         bolNumber,
-        estimatedDelivery
+        estimatedDelivery,
+        customerPin
       );
 
       const itemStmts = body.items.map((item: any, index: number) => {
@@ -80,9 +184,12 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
           success: true,
           orderId,
           orderNumber,
+          customerEmail: body.customerEmail,
+          customerPin,
           trackingNumber,
           bolNumber,
           storage: 'cloudflare_d1',
+          emailStatus,
         }),
         { status: 201, headers: { 'Content-Type': 'application/json' } }
       );
@@ -93,9 +200,12 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         success: true,
         orderId,
         orderNumber,
+        customerEmail: body.customerEmail,
+        customerPin,
         trackingNumber,
         bolNumber,
         storage: 'mock_preview',
+        emailStatus,
       }),
       { status: 201, headers: { 'Content-Type': 'application/json' } }
     );
